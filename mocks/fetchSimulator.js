@@ -34,5 +34,4 @@ const fetchSimulator = (url) => {
 
 global.fetch = jest.fn(fetchSimulator);
 afterEach(jest.clearAllMocks);
-
 module.exports = fetchSimulator;
