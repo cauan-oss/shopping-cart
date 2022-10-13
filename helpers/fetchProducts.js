@@ -8,10 +8,6 @@ const fetchProducts = async (param) => {
  }
   };
 
-/*  window.onload = () => {
-  fetchProducts();
- }; */
-
 if (typeof module !== 'undefined') {
   module.exports = {
     fetchProducts,
