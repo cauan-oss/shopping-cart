@@ -53,7 +53,10 @@ const createProductItemElement = ({ id, title, thumbnail }) => {
 const cartItemClickListener = () => { 
  const wipedButton = document.querySelector('.empty-cart');
  const myOl = document.querySelector('.cart__items');
- wipedButton.addEventListener('click', () => {
+wipedButton.addEventListener('click', () => {
+  myOl.innerHTML = '';
+});
+ myOl.addEventListener('click', () => {
      myOl.innerHTML = '';
  });
 };
@@ -86,8 +89,8 @@ const myFunction = async () => {
  * @param {Element} product - Elemento do produto.
  * @returns {string} ID do produto.
  */
-/* const getIdFromProductItem = (product) => product.querySelector('span.id').innerText;
- */
+ const getIdFromProductItem = (product) => product.querySelector('span.id').innerText;
+
 /**
  * Função responsável por criar e retornar um item do carrinho.
  * @param {Object} product - Objeto do produto.
@@ -100,4 +103,5 @@ const myFunction = async () => {
 window.onload = async () => { 
   await myFunction();
   cartItemClickListener();
+  saveCartItems();
 };
