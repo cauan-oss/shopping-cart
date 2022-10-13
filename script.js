@@ -1,6 +1,5 @@
 // Esse tipo de comentário que estão antes de todas as funções são chamados de JSdoc,
 // experimente passar o mouse sobre o nome das funções e verá que elas possuem descrições! 
-
 /* const { fetchProducts } = require('./helpers/fetchProducts'); */
 
 // Fique a vontade para modificar o código já escrito e criar suas próprias funções!
@@ -50,15 +49,31 @@ const createProductItemElement = ({ id, title, thumbnail }) => {
 
   return section;
 };
-
+const carItem = document.querySelector('.cart__items');
 const myFunction = async () => {
   const getProduct = await fetchProducts('computador');
   const myResults = getProduct.results;
   const selectSection = document.querySelector('.items');
   myResults.forEach((element) => {
-    selectSection.appendChild(createProductItemElement(element));
+    const product = createProductItemElement(element);
+    product.lastChild.addEventListener('click', () => {
+      const cartProduct = createCartItemElement(element);
+      carItem.appendChild(cartProduct);
+    });
+    selectSection.appendChild(product);
   });
 };  
+/* const myFetchItem = async () => {
+  const getProduct = await fetchProducts('computador');
+  const myResults = getProduct.results;
+  const product = createProductItemElement();
+  myResults.find((element) => {
+    if (product.firstChild === element.id) {
+      carItem.innerText = fetchItem();
+    }
+  });
+  return myResults;
+}; */
  
 /**
  * Função que recupera o ID do produto passado como parâmetro.
@@ -66,7 +81,7 @@ const myFunction = async () => {
  * @returns {string} ID do produto.
  */
 const getIdFromProductItem = (product) => product.querySelector('span.id').innerText;
-
+const cartItemClickListener = () => { };
 /**
  * Função responsável por criar e retornar um item do carrinho.
  * @param {Object} product - Objeto do produto.
@@ -82,4 +97,8 @@ const createCartItemElement = ({ id, title, price }) => {
   li.addEventListener('click', cartItemClickListener);
   return li;
 };
-window.onload = async () => { await myFunction(); };
+
+window.onload = async () => { 
+  await myFunction();
+  //console.log(await myFetchItem());
+};
