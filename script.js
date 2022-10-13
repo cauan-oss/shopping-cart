@@ -50,7 +50,13 @@ const createProductItemElement = ({ id, title, thumbnail }) => {
   return section;
 };
 
-const cartItemClickListener = () => { };
+const cartItemClickListener = () => { 
+ const wipedButton = document.querySelector('.empty-cart');
+ const myOl = document.querySelector('.cart__items');
+ wipedButton.addEventListener('click', () => {
+     myOl.innerHTML = '';
+ });
+};
 
 const createCartItemElement = ({ id, title, price }) => {
   const li = document.createElement('li');
@@ -93,4 +99,5 @@ const getIdFromProductItem = (product) => product.querySelector('span.id').inner
 
 window.onload = async () => { 
   await myFunction();
+  cartItemClickListener();
 };
