@@ -88,7 +88,7 @@ const myFunction = async () => {
  console.log(retorna);
  if (retorna !== null) {
    retorna.push(product);
-   console.log(retorna);
+   saveCartItems(JSON.stringify(retorna));
   } else {
     saveCartItems(JSON.stringify([product]));
   }
@@ -113,5 +113,4 @@ const myFunction = async () => {
 window.onload = async () => { 
   await myFunction();
   cartItemClickListener();
-  saveCartItems(); 
 };
