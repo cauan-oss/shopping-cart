@@ -1,8 +1,5 @@
-const saveCartItems = () => {
-  const myCar = document.querySelector('.cart__items');
-  if (myCar === myCar.appendChild(carItem));
-  console.log(myCar);
-  return localStorage.setItem('cartItem', myCar); 
+const saveCartItems = (product) => {
+  localStorage.setItem('cartItems', product);
 };
 
 if (typeof module !== 'undefined') {

@@ -1,7 +1,6 @@
 // Esse tipo de comentário que estão antes de todas as funções são chamados de JSdoc,
 // experimente passar o mouse sobre o nome das funções e verá que elas possuem descrições! 
 /* const { fetchProducts } = require('./helpers/fetchProducts'); */
-
 // Fique a vontade para modificar o código já escrito e criar suas próprias funções!
 
 /**
@@ -79,11 +78,22 @@ const myFunction = async () => {
     product.lastChild.addEventListener('click', () => {
       const cartProduct = createCartItemElement(element);
       carItem.appendChild(cartProduct);
-    });
+      functionSave(element);
+      });
     selectSection.appendChild(product);
   });
 };  
- 
+ const functionSave = (product) => {
+ const retorna = JSON.parse(localStorage.getItem('cartItems'));
+ console.log(retorna);
+ if (retorna !== null) {
+   retorna.push(product);
+   console.log(retorna);
+  } else {
+    saveCartItems(JSON.stringify([product]));
+  }
+};
+  
 /**
  * Função que recupera o ID do produto passado como parâmetro.
  * @param {Element} product - Elemento do produto.
