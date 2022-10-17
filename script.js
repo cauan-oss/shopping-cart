@@ -100,8 +100,8 @@ const myFunction = async () => {
  * @param {Element} product - Elemento do produto.
  * @returns {string} ID do produto.
  */
-  const getIdFromProductItem = (product) => product.querySelector('span.id').innerText; 
-
+ /* const getIdFromProductItem = (product) => product.querySelector('span.id').innerText; 
+ */
 /**
  * Função responsável por criar e retornar um item do carrinho.
  * @param {Object} product - Objeto do produto.
