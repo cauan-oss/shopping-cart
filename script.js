@@ -68,6 +68,17 @@ const createCartItemElement = ({ id, title, price }) => {
   return li;
 };
 
+const functionSave = (product) => {
+  const retorna = JSON.parse(localStorage.getItem('cartItems'));
+  console.log(retorna);
+  if (retorna !== null) {
+    retorna.push(product);
+    saveCartItems(JSON.stringify(retorna));
+   } else {
+     saveCartItems(JSON.stringify([product]));
+   }
+ }; 
+
 const carItem = document.querySelector('.cart__items');
 const myFunction = async () => {
   const getProduct = await fetchProducts('computador');
@@ -83,16 +94,6 @@ const myFunction = async () => {
     selectSection.appendChild(product);
   });
 };  
- const functionSave = (product) => {
- const retorna = JSON.parse(localStorage.getItem('cartItems'));
- console.log(retorna);
- if (retorna !== null) {
-   retorna.push(product);
-   saveCartItems(JSON.stringify(retorna));
-  } else {
-    saveCartItems(JSON.stringify([product]));
-  }
-};
   
 /**
  * Função que recupera o ID do produto passado como parâmetro.
