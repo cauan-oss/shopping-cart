@@ -53,11 +53,13 @@ const cartItemClickListener = (event) => {
  event.target.remove();
 };
 
-const wipedButton = document.querySelector('.empty-cart');
- const myOl = document.querySelector('.cart__items');
-wipedButton.addEventListener('click', () => {
-  myOl.innerHTML = '';
-});
+const buttonWiped = () => {
+  const wipedButton = document.querySelector('.empty-cart');
+   const myOl = document.querySelector('.cart__items');
+  wipedButton.addEventListener('click', () => {
+    myOl.innerHTML = '';
+  });
+};
  
 const createCartItemElement = ({ id, title, price }) => {
   const li = document.createElement('li');
@@ -69,7 +71,6 @@ const createCartItemElement = ({ id, title, price }) => {
 
 const functionSave = (product) => {
   const retorna = JSON.parse(localStorage.getItem('cartItems'));
-  console.log(retorna);
   if (retorna !== null) {
     retorna.push(product);
     saveCartItems(JSON.stringify(retorna));
@@ -112,5 +113,5 @@ const myFunction = async () => {
 
 window.onload = async () => { 
   await myFunction();
-  cartItemClickListener();
+  buttonWiped();
 };
