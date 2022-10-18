@@ -49,17 +49,16 @@ const createProductItemElement = ({ id, title, thumbnail }) => {
   return section;
 };
 
-const cartItemClickListener = () => { 
- const wipedButton = document.querySelector('.empty-cart');
+const cartItemClickListener = (event) => { 
+ event.target.remove();
+};
+
+const wipedButton = document.querySelector('.empty-cart');
  const myOl = document.querySelector('.cart__items');
 wipedButton.addEventListener('click', () => {
   myOl.innerHTML = '';
 });
- myOl.addEventListener('click', () => {
-     myOl.innerHTML = '';
- });
-};
-
+ 
 const createCartItemElement = ({ id, title, price }) => {
   const li = document.createElement('li');
   li.className = 'cart__item';
