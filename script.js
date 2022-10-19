@@ -97,11 +97,13 @@ const myFunction = async () => {
 
 const doGet = () => {
  const getCart = getSavedCartItems();
- const parseJson = JSON.parse(getCart);
- parseJson.forEach((element) => {
-  const cartProduct = createCartItemElement(element);
-  carItem.appendChild(cartProduct);
- });
+ if (getCart !== null) {
+  const parseJson = JSON.parse(getCart);
+  parseJson.forEach((element) => {
+   const cartProduct = createCartItemElement(element);
+   carItem.appendChild(cartProduct);
+  });
+ }
 };
   
 /**
