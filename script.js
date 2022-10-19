@@ -94,6 +94,15 @@ const myFunction = async () => {
     selectSection.appendChild(product);
   });
 };  
+
+const doGet = () => {
+ const getCart = getSavedCartItems();
+ const parseJson = JSON.parse(getCart);
+ parseJson.forEach((element) => {
+  const cartProduct = createCartItemElement(element);
+  carItem.appendChild(cartProduct);
+ });
+};
   
 /**
  * Função que recupera o ID do produto passado como parâmetro.
@@ -114,4 +123,5 @@ const myFunction = async () => {
 window.onload = async () => { 
   await myFunction();
   buttonWiped();
+  doGet();
 };
